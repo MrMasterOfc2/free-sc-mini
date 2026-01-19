@@ -1,4 +1,3 @@
-
 const express = require('express');
 const fs = require('fs-extra');
 const path = require('path');
@@ -652,7 +651,7 @@ case 'menu': {
 ╭────────￫
 │  🔧ғᴇᴀᴛᴜʀᴇs                  
 │  [1] 👑 ᴏᴡɴᴇʀ                           
-│  [2]..ᴄᴏᴍɪɴɢ sᴏᴏɴ                           
+│  [2]..ᴄᴏᴍɪɴɢ sᴏᴏɴ⤵️                           
 │  [3]...                            
 │  [4]..                       
 │  [5]...                               
@@ -667,7 +666,7 @@ case 'menu': {
       // ᴍᴏʀᴇ sᴏᴏɴ
     ];
 
-    const defaultImg = config.IMAGE_PATH;
+    const defaultImg = "https://files.catbox.moe/sb24ud.jpg";
     const useLogo = userCfg.logo || defaultImg;
 
     // build image payload (url or buffer)
@@ -698,7 +697,7 @@ case 'ping': {
     const sanitized = (number || '').replace(/[^0-9]/g, '');
     const cfg = await loadUserConfigFromMongo(sanitized) || {};
     const botName = cfg.botName || BOT_NAME_FANCY;
-    const logo = cfg.logo || config.FREE_IMAGE;
+    const logo = cfg.logo || "https://files.catbox.moe/sb24ud.jpg ";
 
     const latency = Date.now() - (msg.messageTimestamp * 1000 || Date.now());
 
@@ -707,7 +706,6 @@ case 'ping': {
 
 *◈ 🛠️ 𝐋atency :*  ${latency}ms
 *◈ 🕢 𝐒erver 𝐓ime :* ${new Date().toLocaleString()}
-${config.BOT_FOOTER}
 `;
 
     let imagePayload = String(logo).startsWith('http') ? { url: logo } : fs.readFileSync(logo);
